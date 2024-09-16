@@ -6,16 +6,26 @@ import lombok.AllArgsConstructor;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class JsonWordsReceiver implements WordsReceiver {
     private String pathToJson;
 
+    private Optional<File> getJsonFile() {
+        return Optional.of(new File(pathToJson));
+    }
+
     @Override
     public List<Word> getWords() {
-        File wordsJson = new File(pathToJson);
+        Optional<File> wordsJson = getJsonFile();
+
+        if (wordsJson.isEmpty()) {
+            return null;
+        }
+
         try {
-            return new ObjectMapper().readValue(wordsJson, new TypeReference<>(){});
+            return new ObjectMapper().readValue(wordsJson.get(), new TypeReference<>(){});
         } catch (IOException e) {
             return null;
         }
