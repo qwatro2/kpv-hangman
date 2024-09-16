@@ -12,7 +12,7 @@ import java.util.Optional;
 public class JsonWordsReceiver implements WordsReceiver {
     private String pathToJson;
 
-    protected Optional<File> getJsonFile(String path) {
+    protected static Optional<File> getJsonFile(String path) {
         return Optional.of(new File(path));
     }
 
