@@ -12,13 +12,13 @@ import java.util.Optional;
 public class JsonWordsReceiver implements WordsReceiver {
     private String pathToJson;
 
-    protected Optional<File> getJsonFile() {
-        return Optional.of(new File(pathToJson));
+    protected Optional<File> getJsonFile(String path) {
+        return Optional.of(new File(path));
     }
 
     @Override
     public List<Word> getWords() {
-        Optional<File> wordsJson = getJsonFile();
+        Optional<File> wordsJson = getJsonFile(pathToJson);
 
         if (wordsJson.isEmpty()) {
             return null;
