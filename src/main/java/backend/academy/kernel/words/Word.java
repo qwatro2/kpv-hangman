@@ -11,6 +11,10 @@ public record Word(String word,
         return word.length();
     }
 
+    public char charAt(int index) throws IndexOutOfBoundsException {
+        return word.charAt(index);
+    }
+
     public boolean containsLetter(char letter) {
         return this.word.contains(Character.toString(letter));
     }
