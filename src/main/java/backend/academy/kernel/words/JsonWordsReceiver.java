@@ -13,7 +13,16 @@ public class JsonWordsReceiver implements WordsReceiver {
     private String pathToJson;
 
     protected static Optional<File> getJsonFile(String path) {
-        return Optional.of(new File(path));
+        if (path == null) {
+            return Optional.empty();
+        }
+
+        File jsonFile = new File(path);
+        if (!jsonFile.exists()) {
+            return Optional.empty();
+        }
+
+        return Optional.of(jsonFile);
     }
 
     @Override
@@ -25,7 +34,8 @@ public class JsonWordsReceiver implements WordsReceiver {
         }
 
         try {
-            return new ObjectMapper().readValue(wordsJson.get(), new TypeReference<>(){});
+            return new ObjectMapper().readValue(wordsJson.get(), new TypeReference<>() {
+            });
         } catch (IOException e) {
             return null;
         }
