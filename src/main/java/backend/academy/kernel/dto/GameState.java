@@ -8,9 +8,6 @@ public record GameState(DifficultyLevel chosenDifficultyLevel,
                         Integer chosenNumberOfFails,
                         Integer currentNumberOfFails,
                         String guessedLetters,
-                        boolean isGameEnded,
-                        boolean isPlayerWon,
-                        boolean isPlayerLose,
                         String prompt,
                         String message) {
 }
