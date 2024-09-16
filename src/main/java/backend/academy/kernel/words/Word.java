@@ -7,6 +7,10 @@ public record Word(String word,
                    String prompt,
                    DifficultyLevel difficultyLevel,
                    Category category) {
+    public int length() {
+        return word.length();
+    }
+
     public boolean containsLetter(char letter) {
         return this.word.contains(Character.toString(letter));
     }
