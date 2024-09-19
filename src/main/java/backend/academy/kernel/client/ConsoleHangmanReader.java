@@ -40,12 +40,7 @@ public class ConsoleHangmanReader implements HangmanReader {
 
         try {
             String answer = reader.readLine();
-            return switch (answer) {
-                case "1" -> Category.CARS;
-                case "2" -> Category.ANIMALS;
-                case "3" -> Category.CITIES;
-                default -> chooseRandomCategory();
-            };
+            return processStringToCategory(answer);
         } catch (IOException e) {
             return chooseRandomCategory();
         }
@@ -85,6 +80,15 @@ public class ConsoleHangmanReader implements HangmanReader {
             case "2" -> DifficultyLevel.MEDIUM;
             case "3" -> DifficultyLevel.HARD;
             default -> chooseRandomDifficultyLevel();
+        };
+    }
+
+    protected Category processStringToCategory(String string) {
+        return switch (string) {
+            case "1" -> Category.CARS;
+            case "2" -> Category.ANIMALS;
+            case "3" -> Category.CITIES;
+            default -> chooseRandomCategory();
         };
     }
 
