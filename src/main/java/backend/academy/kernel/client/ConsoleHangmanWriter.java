@@ -3,23 +3,6 @@ package backend.academy.kernel.client;
 import backend.academy.kernel.dto.GameState;
 
 public class ConsoleHangmanWriter implements HangmanWriter {
-    @Override
-    public void writeGameState(GameState state) {
-        printSeparator();
-        printPicture(state.currentNumberOfFails(), state.chosenNumberOfFails());
-        printSeparator();
-        System.out.println("Difficulty level: " + state.chosenDifficultyLevel());
-        System.out.println("Category: " + state.chosenCategory());
-        System.out.println("Number of fails: " + state.currentNumberOfFails() + " / " + state.chosenNumberOfFails());
-        System.out.println("Word: " + state.guessedLetters());
-        if (state.prompt() != null) {
-            System.out.println("Prompt: " + state.prompt());
-        }
-        if (state.message() != null) {
-            System.out.println("Message: " + state.message());
-        }
-    }
-
     private static void printSeparator() {
         System.out.println("~".repeat(25));
     }
@@ -82,5 +65,22 @@ public class ConsoleHangmanWriter implements HangmanWriter {
         System.out.println("\t|    /|\\");
         System.out.println("\t|     | ");
         System.out.println("\t|    / \\");
+    }
+
+    @Override
+    public void writeGameState(GameState state) {
+        printSeparator();
+        printPicture(state.currentNumberOfFails(), state.chosenNumberOfFails());
+        printSeparator();
+        System.out.println("Difficulty level: " + state.chosenDifficultyLevel());
+        System.out.println("Category: " + state.chosenCategory());
+        System.out.println("Number of fails: " + state.currentNumberOfFails() + " / " + state.chosenNumberOfFails());
+        System.out.println("Word: " + state.guessedLetters());
+        if (state.prompt() != null) {
+            System.out.println("Prompt: " + state.prompt());
+        }
+        if (state.message() != null) {
+            System.out.println("Message: " + state.message());
+        }
     }
 }

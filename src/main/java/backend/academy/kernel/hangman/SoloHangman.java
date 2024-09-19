@@ -21,20 +21,16 @@ public class SoloHangman implements Hangman {
     private final HangmanWriter hangmanWriter;
 
     private final Random random;
-
-    private List<Word> words;
-
+    private final HashSet<Character> triedLetters;
     protected DifficultyLevel chosenDifficultyLevel;
     protected Category chosenCategory;
+    private List<Word> words;
     private Integer chosenNumberOfFails;
-
     private Word chosenWord;
     private List<Boolean> guessedLetters;
-
     private Integer currentNumberOfFails;
     private boolean isPromptShown;
     private String currentMessage;
-    private final HashSet<Character> triedLetters;
 
     public SoloHangman(
         WordsReceiver wordsReceiver, HangmanReader hangmanReader, HangmanWriter hangmanWriter

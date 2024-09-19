@@ -2,7 +2,6 @@ package backend.academy.kernel.client;
 
 import backend.academy.kernel.words.Category;
 import backend.academy.kernel.words.DifficultyLevel;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,11 +14,11 @@ public class ConsoleHangmanReader implements HangmanReader {
     @Override
     public DifficultyLevel readDifficultyLevel() {
         System.out.println("""
-                Choose difficulty level:
-                [1] Easy
-                [2] Medium
-                [3] Hard
-                [other] Random""");
+            Choose difficulty level:
+            [1] Easy
+            [2] Medium
+            [3] Hard
+            [other] Random""");
 
         try {
             String answer = reader.readLine();
@@ -32,11 +31,11 @@ public class ConsoleHangmanReader implements HangmanReader {
     @Override
     public Category readCategory() {
         System.out.println("""
-                Choose category:
-                [1] Cars
-                [2] Animals
-                [3] Cities
-                [other] Random""");
+            Choose category:
+            [1] Cars
+            [2] Animals
+            [3] Cities
+            [other] Random""");
 
         try {
             String answer = reader.readLine();
@@ -49,7 +48,7 @@ public class ConsoleHangmanReader implements HangmanReader {
     @Override
     public Integer readNumberOfFails() {
         System.out.println("Write number of fails between 5 and 8 after which you lose.\n" +
-                "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
+            "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
         try {
             String answer = reader.readLine();
             return switch (answer) {

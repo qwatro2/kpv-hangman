@@ -3,7 +3,6 @@ package backend.academy.kernel.hangman;
 import backend.academy.kernel.client.ConsoleHangmanReader;
 import backend.academy.kernel.client.ConsoleHangmanWriter;
 import backend.academy.kernel.words.JsonWordsReceiver;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

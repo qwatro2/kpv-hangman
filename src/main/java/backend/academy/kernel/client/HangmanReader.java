@@ -5,7 +5,10 @@ import backend.academy.kernel.words.DifficultyLevel;
 
 public interface HangmanReader {
     DifficultyLevel readDifficultyLevel();
+
     Category readCategory();
+
     Integer readNumberOfFails();
+
     String readLetterToGuess();
 }

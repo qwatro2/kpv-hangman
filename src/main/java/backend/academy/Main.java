@@ -2,8 +2,8 @@ package backend.academy;
 
 import backend.academy.kernel.client.ConsoleHangmanReader;
 import backend.academy.kernel.client.ConsoleHangmanWriter;
-import backend.academy.kernel.hangman.SoloHangman;
 import backend.academy.kernel.hangman.Hangman;
+import backend.academy.kernel.hangman.SoloHangman;
 import backend.academy.kernel.words.JsonWordsReceiver;
 import lombok.experimental.UtilityClass;
 
