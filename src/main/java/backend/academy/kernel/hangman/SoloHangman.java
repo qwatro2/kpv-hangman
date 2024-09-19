@@ -24,8 +24,8 @@ public class SoloHangman implements Hangman {
 
     private List<Word> words;
 
-    private DifficultyLevel chosenDifficultyLevel;
-    private Category chosenCategory;
+    protected DifficultyLevel chosenDifficultyLevel;
+    protected Category chosenCategory;
     private Integer chosenNumberOfFails;
 
     private Word chosenWord;
@@ -119,7 +119,7 @@ public class SoloHangman implements Hangman {
         }
     }
 
-    private boolean validateAttempt(String attempt) {
+    protected boolean validateAttempt(String attempt) {
         if (attempt == null) {
             this.currentMessage = "Error due reading your answer. Repeat please.";
             return false;
@@ -139,11 +139,11 @@ public class SoloHangman implements Hangman {
         return true;
     }
 
-    private char convertOneCharStringToUppercaseChar(String string) {
+    protected char convertOneCharStringToUppercaseChar(String string) {
         return StringUtils.upperCase(string).charAt(0);
     }
 
-    private boolean validateLetter(char letter) {
+    protected boolean validateLetter(char letter) {
         if (letter < 'A' || letter > 'Z') {
             this.currentMessage = "You should write english letter. Repeat please.";
             return false;
