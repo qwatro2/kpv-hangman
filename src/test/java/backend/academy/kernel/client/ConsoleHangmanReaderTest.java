@@ -35,7 +35,7 @@ class ConsoleHangmanReaderTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideStringsForProcessStringToDifficultyLevel")
+    @MethodSource("provideStringsForProcessStringToCategory")
     void processStringToCategory_ShouldReturnCorrectCategory(String number, Category expected) {
         assertThat(consoleHangmanReader.processStringToCategory(number)).isEqualTo(expected);
     }
