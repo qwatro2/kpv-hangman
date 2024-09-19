@@ -16,6 +16,9 @@ import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
 public class SoloHangman implements Hangman {
+    private static final Integer MINIMUM_NUMBER_OF_FAILS = 5;
+    private static final Integer MAXIMUM_NUMBER_OF_FAILS = 8;
+
     private final WordsReceiver wordsReceiver;
     private final HangmanReader hangmanReader;
     private final HangmanWriter hangmanWriter;
@@ -81,15 +84,27 @@ public class SoloHangman implements Hangman {
     }
 
     @Override public DifficultyLevel receiveDifficultyLevel() {
-        return hangmanReader.readDifficultyLevel();
+        DifficultyLevel difficultyLevel = hangmanReader.readDifficultyLevel();
+        if (difficultyLevel == null) {
+            difficultyLevel = chooseRandomDifficultyLevel();
+        }
+        return difficultyLevel;
     }
 
     @Override public Category receiveCategory() {
-        return hangmanReader.readCategory();
+        Category category = hangmanReader.readCategory();
+        if (category == null) {
+            category = chooseRandomCategory();
+        }
+        return category;
     }
 
     @Override public Integer receiveNumberOfFails() {
-        return hangmanReader.readNumberOfFails();
+        Integer numberOfFails = hangmanReader.readNumberOfFails();
+        if (numberOfFails == null) {
+            numberOfFails = chooseRandomNumberOfFails();
+        }
+        return numberOfFails;
     }
 
     @Override public String receiveLetterToGuess() {
@@ -98,6 +113,22 @@ public class SoloHangman implements Hangman {
 
     @Override public void sendGameState(GameState state) {
         hangmanWriter.writeGameState(state);
+    }
+
+    private DifficultyLevel chooseRandomDifficultyLevel() {
+        DifficultyLevel[] difficultyLevels = DifficultyLevel.values();
+        int numberOfDifficultyLevels = difficultyLevels.length;
+        return difficultyLevels[random.nextInt(numberOfDifficultyLevels)];
+    }
+
+    private Category chooseRandomCategory() {
+        Category[] categories = Category.values();
+        int numberOfCategories = categories.length;
+        return categories[random.nextInt(numberOfCategories)];
+    }
+
+    private int chooseRandomNumberOfFails() {
+        return MINIMUM_NUMBER_OF_FAILS + random.nextInt(MAXIMUM_NUMBER_OF_FAILS - MINIMUM_NUMBER_OF_FAILS + 1);
     }
 
     private void receiveInfo() {

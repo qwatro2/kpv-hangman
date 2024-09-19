@@ -4,40 +4,43 @@ import backend.academy.kernel.dto.GameState;
 import java.io.PrintStream;
 
 public class ConsoleHangmanWriter implements HangmanWriter {
+    private static final int LENGTH_OF_SEPARATION_LINE = 25;
+    private static final int LENGTH_OF_FLOOR = 8;
+    private static final int NUMBER_OF_FAILS_EMPTY_PICTURE = 0;
+    private static final int NUMBER_OF_FAILS_FLOOR = 1;
+    private static final int NUMBER_OF_FAILS_PILLAR = 2;
+    private static final int NUMBER_OF_FAILS_CEILING = 3;
+
     private PrintStream printStream;
 
     private void printSeparator() {
-        printStream.println("~".repeat(25));
+        printStream.println("~".repeat(LENGTH_OF_SEPARATION_LINE));
     }
 
     private void printPicture(int current, int maximum) {
-        if (current == 0) {
+        if (current == NUMBER_OF_FAILS_EMPTY_PICTURE) {
             printEmptyPicture(maximum + 2);
-        } else if (current == 1) {
+        } else if (current == NUMBER_OF_FAILS_FLOOR) {
             printEmptyPicture(maximum + 1);
             printHorizontal(false);
-        } else if (current == 2) {
+        } else if (current == NUMBER_OF_FAILS_PILLAR) {
             printEmptyPicture(1);
             printPillar(maximum);
             printHorizontal(true);
-        } else if (current == 3) {
+        } else if (current == NUMBER_OF_FAILS_CEILING) {
             printHorizontal(false);
             printPillar(maximum);
             printHorizontal(true);
-        } else if (current > 3 && current < maximum) {
+        } else if (current > NUMBER_OF_FAILS_CEILING && current < maximum) {
             printHorizontal(false);
-            printPillarAndRope(current - 3);
-            printPillar(maximum - current + 3);
+            printPillarAndRope(current - NUMBER_OF_FAILS_CEILING);
+            printPillar(maximum - current + NUMBER_OF_FAILS_CEILING);
             printHorizontal(true);
         } else if (current == maximum) {
             printHorizontal(false);
-            printPillarAndRope(maximum - 4);
+            printPillarAndRope(maximum - NUMBER_OF_FAILS_CEILING - 1);
             printHuman();
             printHorizontal(true);
-        } else {
-            printEmptyPicture(4);
-            printStream.println("Something went wrong");
-            printEmptyPicture(4);
         }
     }
 
@@ -48,7 +51,8 @@ public class ConsoleHangmanWriter implements HangmanWriter {
     }
 
     private void printHorizontal(boolean isWithPillar) {
-        printStream.println("\t" + (isWithPillar ? "|" : "_") + "_".repeat(isWithPillar ? 7 : 8));
+        printStream.println("\t" + (isWithPillar ? "|" : "_")
+                + "_".repeat(isWithPillar ? LENGTH_OF_FLOOR - 1 : LENGTH_OF_FLOOR));
     }
 
     private void printPillarAndRope(int times) {

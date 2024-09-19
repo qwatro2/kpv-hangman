@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.Random;
 
 public class ConsoleHangmanReader implements HangmanReader {
-    private final Random random = new Random();
     private PrintStream printStream;
     private BufferedReader reader;
 
@@ -39,7 +37,7 @@ public class ConsoleHangmanReader implements HangmanReader {
             String answer = reader.readLine();
             return processStringToDifficultyLevel(answer);
         } catch (IOException e) {
-            return chooseRandomDifficultyLevel();
+            return null;
         }
     }
 
@@ -56,7 +54,7 @@ public class ConsoleHangmanReader implements HangmanReader {
             String answer = reader.readLine();
             return processStringToCategory(answer);
         } catch (IOException e) {
-            return chooseRandomCategory();
+            return null;
         }
     }
 
@@ -66,15 +64,9 @@ public class ConsoleHangmanReader implements HangmanReader {
                 + "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
         try {
             String answer = reader.readLine();
-            return switch (answer) {
-                case "5" -> 5;
-                case "6" -> 6;
-                case "7" -> 7;
-                case "8" -> 8;
-                default -> chooseRandomNumberOfFails();
-            };
+            return processStringToNumberOfFails(answer);
         } catch (IOException e) {
-            return chooseRandomNumberOfFails();
+            return null;
         }
     }
 
@@ -88,12 +80,30 @@ public class ConsoleHangmanReader implements HangmanReader {
         }
     }
 
+    protected Integer processStringToNumberOfFails(String string) {
+        if (string == null) {
+            return null;
+        }
+        try {
+            if (string.length() != 1) {
+                return null;
+            }
+        } catch (NullPointerException e) {
+            return null;
+        }
+        char number = string.charAt(0);
+        if ('5' <= number && number <= '8') {
+            return number - '0';
+        }
+        return null;
+    }
+
     protected DifficultyLevel processStringToDifficultyLevel(String string) {
         return switch (string) {
             case "1" -> DifficultyLevel.EASY;
             case "2" -> DifficultyLevel.MEDIUM;
             case "3" -> DifficultyLevel.HARD;
-            default -> chooseRandomDifficultyLevel();
+            default -> null;
         };
     }
 
@@ -102,24 +112,7 @@ public class ConsoleHangmanReader implements HangmanReader {
             case "1" -> Category.CARS;
             case "2" -> Category.ANIMALS;
             case "3" -> Category.CITIES;
-            default -> chooseRandomCategory();
+            default -> null;
         };
     }
-
-    private DifficultyLevel chooseRandomDifficultyLevel() {
-        DifficultyLevel[] difficultyLevels = DifficultyLevel.values();
-        int numberOfDifficultyLevels = difficultyLevels.length;
-        return difficultyLevels[random.nextInt(numberOfDifficultyLevels)];
-    }
-
-    private Category chooseRandomCategory() {
-        Category[] categories = Category.values();
-        int numberOfCategories = categories.length;
-        return categories[random.nextInt(numberOfCategories)];
-    }
-
-    private int chooseRandomNumberOfFails() {
-        return 5 + random.nextInt(4);
-    }
-
 }
