@@ -2,8 +2,11 @@ package backend.academy.kernel.client;
 
 import backend.academy.kernel.words.Category;
 import backend.academy.kernel.words.DifficultyLevel;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Random;
 
 public class ConsoleHangmanReader implements HangmanReader {
