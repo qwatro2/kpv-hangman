@@ -23,12 +23,7 @@ public class ConsoleHangmanReader implements HangmanReader {
 
         try {
             String answer = reader.readLine();
-            return switch (answer) {
-                case "1" -> DifficultyLevel.EASY;
-                case "2" -> DifficultyLevel.MEDIUM;
-                case "3" -> DifficultyLevel.HARD;
-                default -> chooseRandomDifficultyLevel();
-            };
+            return processStringToDifficultyLevel(answer);
         } catch (IOException e) {
             return chooseRandomDifficultyLevel();
         }
@@ -58,7 +53,7 @@ public class ConsoleHangmanReader implements HangmanReader {
 
     @Override
     public Integer readNumberOfFails() {
-        System.out.println("Write number of fails between 5 and 8 after which you lose. " +
+        System.out.println("Write number of fails between 5 and 8 after which you lose.\n" +
                 "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
         try {
             String answer = reader.readLine();
@@ -84,6 +79,15 @@ public class ConsoleHangmanReader implements HangmanReader {
         }
     }
 
+    protected DifficultyLevel processStringToDifficultyLevel(String string) {
+        return switch (string) {
+            case "1" -> DifficultyLevel.EASY;
+            case "2" -> DifficultyLevel.MEDIUM;
+            case "3" -> DifficultyLevel.HARD;
+            default -> chooseRandomDifficultyLevel();
+        };
+    }
+
     private DifficultyLevel chooseRandomDifficultyLevel() {
         DifficultyLevel[] difficultyLevels = DifficultyLevel.values();
         int numberOfDifficultyLevels = difficultyLevels.length;
@@ -99,4 +103,5 @@ public class ConsoleHangmanReader implements HangmanReader {
     private int chooseRandomNumberOfFails() {
         return 5 + random.nextInt(4);
     }
+
 }
