@@ -2,23 +2,35 @@ package backend.academy.kernel.client;
 
 import backend.academy.kernel.words.Category;
 import backend.academy.kernel.words.DifficultyLevel;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.io.*;
 import java.util.Random;
 
 public class ConsoleHangmanReader implements HangmanReader {
-    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final Random random = new Random();
+    private PrintStream printStream;
+    private BufferedReader reader;
+
+    @Override
+    public HangmanReader setInputStream(InputStream inputStream) {
+        this.reader = new BufferedReader(new InputStreamReader(inputStream));
+        return this;
+    }
+
+    @Override
+    public HangmanReader setPrintStream(PrintStream printStream) {
+        this.printStream = printStream;
+        return this;
+    }
 
     @Override
     public DifficultyLevel readDifficultyLevel() {
-        System.out.println("""
-            Choose difficulty level:
-            [1] Easy
-            [2] Medium
-            [3] Hard
-            [other] Random""");
+        printStream.println("""
+                Choose difficulty level:
+                [1] Easy
+                [2] Medium
+                [3] Hard
+                [other] Random""");
 
         try {
             String answer = reader.readLine();
@@ -30,12 +42,12 @@ public class ConsoleHangmanReader implements HangmanReader {
 
     @Override
     public Category readCategory() {
-        System.out.println("""
-            Choose category:
-            [1] Cars
-            [2] Animals
-            [3] Cities
-            [other] Random""");
+        printStream.println("""
+                Choose category:
+                [1] Cars
+                [2] Animals
+                [3] Cities
+                [other] Random""");
 
         try {
             String answer = reader.readLine();
@@ -47,8 +59,8 @@ public class ConsoleHangmanReader implements HangmanReader {
 
     @Override
     public Integer readNumberOfFails() {
-        System.out.println("Write number of fails between 5 and 8 after which you lose.\n" +
-            "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
+        printStream.println("Write number of fails between 5 and 8 after which you lose.\n" +
+                "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
         try {
             String answer = reader.readLine();
             return switch (answer) {
@@ -65,7 +77,7 @@ public class ConsoleHangmanReader implements HangmanReader {
 
     @Override
     public String readLetterToGuess() {
-        System.out.print("Write letter to guess or 'prompt' to get prompt: ");
+        printStream.print("Write letter to guess or 'prompt' to get prompt: ");
         try {
             return reader.readLine();
         } catch (IOException e) {

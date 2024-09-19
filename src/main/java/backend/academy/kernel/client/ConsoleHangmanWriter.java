@@ -2,12 +2,16 @@ package backend.academy.kernel.client;
 
 import backend.academy.kernel.dto.GameState;
 
+import java.io.PrintStream;
+
 public class ConsoleHangmanWriter implements HangmanWriter {
-    private static void printSeparator() {
-        System.out.println("~".repeat(25));
+    private PrintStream printStream;
+
+    private void printSeparator() {
+        printStream.println("~".repeat(25));
     }
 
-    private static void printPicture(int current, int maximum) {
+    private void printPicture(int current, int maximum) {
         if (current == 0) {
             printEmptyPicture(maximum + 2);
         } else if (current == 1) {
@@ -33,38 +37,44 @@ public class ConsoleHangmanWriter implements HangmanWriter {
             printHorizontal(true);
         } else {
             printEmptyPicture(4);
-            System.out.println("Something went wrong");
+            printStream.println("Something went wrong");
             printEmptyPicture(4);
         }
     }
 
-    private static void printEmptyPicture(int times) {
+    private void printEmptyPicture(int times) {
         for (int i = 0; i < times; ++i) {
-            System.out.println();
+            printStream.println();
         }
     }
 
-    private static void printHorizontal(boolean isWithPillar) {
-        System.out.println("\t" + (isWithPillar ? "|" : "_") + "_".repeat(isWithPillar ? 7 : 8));
+    private void printHorizontal(boolean isWithPillar) {
+        printStream.println("\t" + (isWithPillar ? "|" : "_") + "_".repeat(isWithPillar ? 7 : 8));
     }
 
-    private static void printPillarAndRope(int times) {
+    private void printPillarAndRope(int times) {
         for (int i = 0; i < times; ++i) {
-            System.out.println("\t|     |");
+            printStream.println("\t|     |");
         }
     }
 
-    private static void printPillar(int times) {
+    private void printPillar(int times) {
         for (int i = 0; i < times; ++i) {
-            System.out.println("\t|");
+            printStream.println("\t|");
         }
     }
 
-    private static void printHuman() {
-        System.out.println("\t|     O ");
-        System.out.println("\t|    /|\\");
-        System.out.println("\t|     | ");
-        System.out.println("\t|    / \\");
+    private void printHuman() {
+        printStream.println("\t|     O ");
+        printStream.println("\t|    /|\\");
+        printStream.println("\t|     | ");
+        printStream.println("\t|    / \\");
+    }
+
+    @Override
+    public HangmanWriter setPrintStream(PrintStream printStream) {
+        this.printStream = printStream;
+        return this;
     }
 
     @Override
@@ -72,15 +82,15 @@ public class ConsoleHangmanWriter implements HangmanWriter {
         printSeparator();
         printPicture(state.currentNumberOfFails(), state.chosenNumberOfFails());
         printSeparator();
-        System.out.println("Difficulty level: " + state.chosenDifficultyLevel());
-        System.out.println("Category: " + state.chosenCategory());
-        System.out.println("Number of fails: " + state.currentNumberOfFails() + " / " + state.chosenNumberOfFails());
-        System.out.println("Word: " + state.guessedLetters());
+        printStream.println("Difficulty level: " + state.chosenDifficultyLevel());
+        printStream.println("Category: " + state.chosenCategory());
+        printStream.println("Number of fails: " + state.currentNumberOfFails() + " / " + state.chosenNumberOfFails());
+        printStream.println("Word: " + state.guessedLetters());
         if (state.prompt() != null) {
-            System.out.println("Prompt: " + state.prompt());
+            printStream.println("Prompt: " + state.prompt());
         }
         if (state.message() != null) {
-            System.out.println("Message: " + state.message());
+            printStream.println("Message: " + state.message());
         }
     }
 }
