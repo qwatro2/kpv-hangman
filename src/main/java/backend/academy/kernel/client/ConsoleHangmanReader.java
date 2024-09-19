@@ -59,8 +59,8 @@ public class ConsoleHangmanReader implements HangmanReader {
 
     @Override
     public Integer readNumberOfFails() {
-        printStream.println("Write number of fails between 5 and 8 after which you lose.\n" +
-                "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
+        printStream.println("Write number of fails between 5 and 8 after which you lose.\n"
+                + "If you write anything other than 5, 6, 7, 8 a random number from 5 to 8 will be selected");
         try {
             String answer = reader.readLine();
             return switch (answer) {
