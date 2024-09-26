@@ -81,11 +81,7 @@ public class ConsoleHangmanReader implements HangmanReader {
     }
 
     private Integer processStringToNumberOfFails(String string) {
-        try {
-            if (string == null || string.length() != 1) {
-                return null;
-            }
-        } catch (NullPointerException e) {
+        if (string == null || string.length() != 1) {
             return null;
         }
         char number = string.charAt(0);
