@@ -11,6 +11,7 @@ import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +28,7 @@ public class SoloHangman implements Hangman {
     private final HashSet<Character> triedLetters;
     protected DifficultyLevel chosenDifficultyLevel;
     protected Category chosenCategory;
-    private List<Word> words;
+    private Map<DifficultyLevel, Map<Category, List<Word>>> words;
     private Integer chosenNumberOfFails;
     private Word chosenWord;
     private List<Boolean> guessedLetters;
@@ -79,7 +80,7 @@ public class SoloHangman implements Hangman {
         sendGameState(currentGameState);
     }
 
-    @Override public List<Word> receiveWordsList() {
+    @Override public Map<DifficultyLevel, Map<Category, List<Word>>> receiveWordsList() {
         return wordsReceiver.getWords();
     }
 
@@ -216,9 +217,7 @@ public class SoloHangman implements Hangman {
     }
 
     private Word chooseWord() {
-        List<Word> suitableWords = words.stream().filter(
-                word -> word.difficultyLevel() == this.chosenDifficultyLevel && word.category() == this.chosenCategory)
-            .toList();
+        List<Word> suitableWords = words.get(this.chosenDifficultyLevel).get(this.chosenCategory);
         int indexOfChosenWord = this.random.nextInt(suitableWords.size());
         return suitableWords.get(indexOfChosenWord);
     }

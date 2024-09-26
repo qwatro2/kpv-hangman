@@ -9,10 +9,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WordTest {
     private static Stream<Arguments> provideWordsAndLettersForContainsLetter() {
         return Stream.of(
-            Arguments.of(new Word("abc", "", DifficultyLevel.EASY, Category.ANIMALS), 'a', true),
-            Arguments.of(new Word("qwertyuio", "", DifficultyLevel.EASY, Category.ANIMALS), 'o', true),
-            Arguments.of(new Word("abc", "", DifficultyLevel.EASY, Category.ANIMALS), 'z', false),
-            Arguments.of(new Word("", "", DifficultyLevel.EASY, Category.ANIMALS), 'a', false)
+            Arguments.of(new Word("abc", ""), 'a', true),
+            Arguments.of(new Word("qwertyuio", ""), 'o', true),
+            Arguments.of(new Word("abc", ""), 'z', false),
+            Arguments.of(new Word("", ""), 'a', false)
         );
     }
 

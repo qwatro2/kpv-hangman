@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 
@@ -26,7 +27,7 @@ public class JsonWordsReceiver implements WordsReceiver {
     }
 
     @Override
-    public List<Word> getWords() {
+    public Map<DifficultyLevel, Map<Category, List<Word>>> getWords() {
         Optional<File> wordsJson = getJsonFile(pathToJson);
 
         if (wordsJson.isEmpty()) {

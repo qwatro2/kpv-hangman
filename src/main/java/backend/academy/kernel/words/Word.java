@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Word(String word,
-                   String prompt,
-                   DifficultyLevel difficultyLevel,
-                   Category category) {
+                   String prompt) {
     public int length() {
         return word.length();
     }
