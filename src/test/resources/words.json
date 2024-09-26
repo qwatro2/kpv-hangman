@@ -1,164 +1,134 @@
-[
-    {
-        "word": "Toyota",
-        "prompt": "This brand's logo is three overlapping ovals, representing a steering wheel, the heart of a person, and the future.",
-        "difficultyLevel": "EASY",
-        "category": "CARS"
+{
+    "EASY": {
+        "CARS": [
+            {
+                "word": "TOYOTA",
+                "prompt": "This brand's logo is three overlapping ovals, representing a steering wheel, the heart of a person, and the future."
+            },
+            {
+                "word": "HONDA",
+                "prompt": "The logo of this brand features a stylized first letter of brand name resembling a wing, signifying speed and progress."
+            },
+            {
+                "word": "FORD",
+                "prompt": "This American brand's logo is a simple oval with the brand name inscribed inside, symbolizing their commitment to quality and endurance."
+            }
+        ],
+        "ANIMALS": [
+            {
+                "word": "DOG",
+                "prompt": "A domesticated canine"
+            },
+            {
+                "word": "CAT",
+                "prompt": "A domesticated feline"
+            },
+            {
+                "word": "BIRD",
+                "prompt": "An animal that can fly"
+            }
+        ],
+        "CITIES": [
+            {
+                "word": "LONDON",
+                "prompt": "The capital of England"
+            },
+            {
+                "word": "PARIS",
+                "prompt": "The capital of France"
+            },
+            {
+                "word": "CHICAGO",
+                "prompt": "A major city in the United States, known for its iconic skyscrapers and deep-dish pizza."
+            }
+        ]
     },
-    {
-        "word": "Honda",
-        "prompt": "The logo of this brand features a stylized first letter resembling a wing, signifying speed and progress.",
-        "difficultyLevel": "EASY",
-        "category": "CARS"
+    "MEDIUM": {
+        "CARS": [
+            {
+                "word": "MERCEDES",
+                "prompt": "This German brand's logo is a three-pointed star, representing the dominance of brand on land, sea, and air."
+            },
+            {
+                "word": "BMW",
+                "prompt": "The logo of this German brand features a blue and white propeller, symbolizing their history in aircraft manufacturing."
+            },
+            {
+                "word": "AUDI",
+                "prompt": "The four interlocking rings in this German brand's logo represent the four companies that merged to form it."
+            }
+        ],
+        "ANIMALS": [
+            {
+                "word": "ELEPHANT",
+                "prompt": "A large mammal with a trunk"
+            },
+            {
+                "word": "LION",
+                "prompt": "A large cat that lives in Africa"
+            },
+            {
+                "word": "GIRAFFE",
+                "prompt": "A tall mammal with a long neck"
+            }
+        ],
+        "CITIES": [
+            {
+                "word": "TOKYO",
+                "prompt": "The capital of Japan"
+            },
+            {
+                "word": "ROME",
+                "prompt": "The capital of Italy, famous for its ancient ruins and the Colosseum."
+            },
+            {
+                "word": "SYDNEY",
+                "prompt": "A major city in Australia, known for its iconic Opera House and beautiful beaches."
+            }
+        ]
     },
-    {
-        "word": "Ford",
-        "prompt": "This American brand's logo is a simple oval with the car brand name inscribed inside, symbolizing their commitment to quality and endurance.",
-        "difficultyLevel": "EASY",
-        "category": "CARS"
-    },
-    {
-        "word": "Mercedes",
-        "prompt": "This German brand's logo is a three-pointed star, representing the dominance of car brand mark on land, sea, and air.",
-        "difficultyLevel": "MEDIUM",
-        "category": "CARS"
-    },
-    {
-        "word": "BMW",
-        "prompt": "The logo of this German brand features a blue and white propeller, symbolizing their history in aircraft manufacturing.",
-        "difficultyLevel": "MEDIUM",
-        "category": "CARS"
-    },
-    {
-        "word": "Audi",
-        "prompt": "The four interlocking rings in this German brand's logo represent the four companies that merged to form car brand name.",
-        "difficultyLevel": "MEDIUM",
-        "category": "CARS"
-    },
-    {
-        "word": "Ferrari",
-        "prompt": "This Italian brand's logo features a prancing black horse, a symbol of speed and power.",
-        "difficultyLevel": "HARD",
-        "category": "CARS"
-    },
-    {
-        "word": "Lamborghini",
-        "prompt": "The logo of this Italian brand depicts a charging bull, representing the zodiac sign of the company's founder.",
-        "difficultyLevel": "HARD",
-        "category": "CARS"
-    },
-    {
-        "word": "Porsche",
-        "prompt": "This German brand's logo features a black horse, symbolizing their history in horse-drawn carriage manufacturing.",
-        "difficultyLevel": "HARD",
-        "category": "CARS"
-    },
-    {
-        "word": "Dog",
-        "prompt": "A domesticated canine",
-        "difficultyLevel": "EASY",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Cat",
-        "prompt": "A domesticated feline",
-        "difficultyLevel": "EASY",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Bird",
-        "prompt": "An animal that can fly",
-        "difficultyLevel": "EASY",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Elephant",
-        "prompt": "A large mammal with a trunk",
-        "difficultyLevel": "MEDIUM",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Lion",
-        "prompt": "A large cat that lives in Africa",
-        "difficultyLevel": "MEDIUM",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Giraffe",
-        "prompt": "A tall mammal with a long neck",
-        "difficultyLevel": "MEDIUM",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Dolphin",
-        "prompt": "A marine mammal known for its intelligence",
-        "difficultyLevel": "HARD",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Whale",
-        "prompt": "The largest animal on Earth",
-        "difficultyLevel": "HARD",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "Shark",
-        "prompt": "A fish with sharp teeth",
-        "difficultyLevel": "HARD",
-        "category": "ANIMALS"
-    },
-    {
-        "word": "London",
-        "prompt": "The capital of England",
-        "difficultyLevel": "EASY",
-        "category": "CITIES"
-    },
-    {
-        "word": "Paris",
-        "prompt": "The capital of France",
-        "difficultyLevel": "EASY",
-        "category": "CITIES"
-    },
-    {
-        "word": "Chicago",
-        "prompt": "A major city in the United States, known for its iconic skyscrapers and deep-dish pizza.",
-        "difficultyLevel": "EASY",
-        "category": "CITIES"
-    },
-    {
-        "word": "Tokyo",
-        "prompt": "The capital of Japan",
-        "difficultyLevel": "MEDIUM",
-        "category": "CITIES"
-    },
-    {
-        "word": "Rome",
-        "prompt": "The capital of Italy, famous for its ancient ruins and the Colosseum.",
-        "difficultyLevel": "MEDIUM",
-        "category": "CITIES"
-    },
-    {
-        "word": "Sydney",
-        "prompt": "A major city in Australia, known for its iconic Opera House and beautiful beaches.",
-        "difficultyLevel": "MEDIUM",
-        "category": "CITIES"
-    },
-    {
-        "word": "Moscow",
-        "prompt": "The capital of Russia, known for its grand architecture and the Red Square.",
-        "difficultyLevel": "HARD",
-        "category": "CITIES"
-    },
-    {
-        "word": "Beijing",
-        "prompt": "The capital of China, known for its ancient history and the Forbidden City.",
-        "difficultyLevel": "HARD",
-        "category": "CITIES"
-    },
-    {
-        "word": "Berlin",
-        "prompt": "The capital of Germany, known for its rich history and the Brandenburg Gate.",
-        "difficultyLevel": "HARD",
-        "category": "CITIES"
+    "HARD": {
+        "CARS": [
+            {
+                "word": "FERRARI",
+                "prompt": "This Italian brand's logo features a prancing black horse, a symbol of speed and power."
+            },
+            {
+                "word": "LAMBORGHINI",
+                "prompt": "The logo of this Italian brand depicts a charging bull, representing the zodiac sign of the company's founder."
+            },
+            {
+                "word": "PORSCHE",
+                "prompt": "This German brand's logo features a black horse, symbolizing their history in horse-drawn carriage manufacturing."
+            }
+        ],
+        "ANIMALS": [
+            {
+                "word": "DOLPHIN",
+                "prompt": "A marine mammal known for its intelligence"
+            },
+            {
+                "word": "WHALE",
+                "prompt": "The largest animal on Earth"
+            },
+            {
+                "word": "SHARK",
+                "prompt": "A fish with sharp teeth"
+            }
+        ],
+        "CITIES": [
+            {
+                "word": "MOSCOW",
+                "prompt": "The capital of Russia, known for its grand architecture and the Red Square."
+            },
+            {
+                "word": "BEIJING",
+                "prompt": "The capital of China, known for its ancient history and the Forbidden City."
+            },
+            {
+                "word": "BERLIN",
+                "prompt": "The capital of Germany, known for its rich history and the Brandenburg Gate."
+            }
+        ]
     }
-]
+}

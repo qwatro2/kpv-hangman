@@ -30,8 +30,7 @@ class JsonWordsReceiverTest {
     private static Stream<Arguments> provideCorrectReceiversForGetWords() {
         return Stream.of(
                 Arguments.of(new JsonWordsReceiver(basePath + "words.json")),
-                Arguments.of(new JsonWordsReceiver(basePath + "few_words.json")),
-                Arguments.of(new JsonWordsReceiver(basePath + "empty_list.json"))
+                Arguments.of(new JsonWordsReceiver(basePath + "few_words.json"))
         );
     }
 
