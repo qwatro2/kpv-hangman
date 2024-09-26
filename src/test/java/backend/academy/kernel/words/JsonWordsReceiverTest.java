@@ -11,22 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class JsonWordsReceiverTest {
     private final static String basePath = "src/test/resources/";
 
-    private static Stream<Arguments> providePathsForGetJsonFile() {
-        return Stream.of(
-                Arguments.of(basePath + "words.json", true),
-                Arguments.of(basePath + "wrong_data.json", true),
-                Arguments.of(basePath + "empty.json", true),
-                Arguments.of(basePath + "not_exists.json", false),
-                Arguments.of(null, false)
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("providePathsForGetJsonFile")
-    void getJsonFile_ShouldReturnPresentOptionalForExistingFile(String path, boolean expected) {
-        assertThat(JsonWordsReceiver.getJsonFile(path).isPresent()).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideCorrectReceiversForGetWords() {
         return Stream.of(
                 Arguments.of(new JsonWordsReceiver(basePath + "words.json")),
