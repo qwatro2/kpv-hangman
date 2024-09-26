@@ -80,7 +80,7 @@ public class ConsoleHangmanReader implements HangmanReader {
         }
     }
 
-    protected Integer processStringToNumberOfFails(String string) {
+    private Integer processStringToNumberOfFails(String string) {
         try {
             if (string == null || string.length() != 1) {
                 return null;
@@ -95,7 +95,7 @@ public class ConsoleHangmanReader implements HangmanReader {
         return null;
     }
 
-    protected DifficultyLevel processStringToDifficultyLevel(String string) {
+    private DifficultyLevel processStringToDifficultyLevel(String string) {
         return switch (string) {
             case "1" -> DifficultyLevel.EASY;
             case "2" -> DifficultyLevel.MEDIUM;
@@ -104,7 +104,7 @@ public class ConsoleHangmanReader implements HangmanReader {
         };
     }
 
-    protected Category processStringToCategory(String string) {
+    private Category processStringToCategory(String string) {
         return switch (string) {
             case "1" -> Category.CARS;
             case "2" -> Category.ANIMALS;

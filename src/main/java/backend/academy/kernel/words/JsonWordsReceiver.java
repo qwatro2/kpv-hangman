@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 public class JsonWordsReceiver implements WordsReceiver {
     private String pathToJson;
 
-    protected static Optional<File> getJsonFile(String path) {
+    private static Optional<File> getJsonFile(String path) {
         if (path == null) {
             return Optional.empty();
         }
