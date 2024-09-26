@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-import org.apache.commons.lang3.StringUtils;
 
 public class SoloHangman implements Hangman {
     private static final Integer MINIMUM_NUMBER_OF_FAILS = 5;
