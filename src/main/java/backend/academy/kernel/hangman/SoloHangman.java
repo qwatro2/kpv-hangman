@@ -153,7 +153,7 @@ public class SoloHangman implements Hangman {
             return false;
         }
 
-        if (StringUtils.lowerCase(attempt).equals("prompt")) {
+        if (attempt.equalsIgnoreCase("prompt")) {
             this.currentMessage = null;
             this.isPromptShown = true;
             return false;
@@ -168,7 +168,7 @@ public class SoloHangman implements Hangman {
     }
 
     private char convertOneCharStringToUppercaseChar(String string) {
-        return StringUtils.upperCase(string).charAt(0);
+        return string.toUpperCase().charAt(0);
     }
 
     private boolean validateLetter(char letter) {
